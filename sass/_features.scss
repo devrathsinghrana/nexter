@@ -1,0 +1,53 @@
+.features {
+  grid-column: center-start / center-end;
+
+  margin: 15rem 0;
+  /*
+  Sub grids,
+  So basically it will allow a grid that is inside a grid,
+
+so like in this case here, to like snap it's tracks
+
+to the parent grid.
+
+For example, align its columns with the columns
+
+of the parent grid.
+
+So in this example, we could then make it so
+
+that the columns of this small grid
+
+would automatically be where the columns
+
+of our overall page layout are.
+
+For now we will do it manually here without using sub grid.
+  */
+  display: grid;
+  // grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));//make grid responsive
+  // we will rows get created implicitly instead of explicitly specifying it
+
+  grid-gap: 6rem;
+}
+
+//this feature class component is reusable in other pages but we have kept here to make writing code easier w.r.t. it's container above
+.feature {
+  display: grid;
+  grid-template-columns: min-content 1fr; //second column will occupy the rest
+  grid-gap: 1.5rem 2.5rem;
+  align-items: start; //by default it is stretch
+  &__icon {
+    fill: $color-primary;
+    width: 4.5rem;
+    height: 4.5rem;
+    // grid-row: 1 / -1;//this -1 means end of the explicit grid but we have not defined grid rows explicitly so it means nothing so we use span
+    grid-row: 1 / span 2;
+    transform: translateY(-1rem);
+  }
+
+  &__text {
+    font-size: 1.7rem;
+  }
+}

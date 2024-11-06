@@ -1,0 +1,146 @@
+// COLOR VARIABLES
+$color-primary: #c69963;
+$color-primary-dark: #b28451;
+
+$color-secondary: #101d2c;
+
+$color-grey-light-1: #f9f7f6;
+$color-grey-light-2: #aaa;
+
+$color-grey-dark-1: #54483a;
+$color-grey-dark-2: #6d5d4b;
+
+// FONT VARIABLES
+$font-primary: "Nunito", sans-serif;
+$font-display: "Josefin Sans", sans-serif;
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%; // 10px / 16px = 62.5 ->  1rem = 10px
+}
+
+body {
+  font-family: $font-primary;
+  color: $color-grey-dark-2;
+  font-weight: 300; //it is thinner and will give a luxury feel to it
+  line-height: 1.6;
+}
+
+.container {
+  display: grid;
+  grid-template-rows: 80vh min-content 40vw repeat(3, min-content);
+  //   our sections go from one side to the other. Full-bleed sections
+  /*
+So you see that in here, for example, here on the top,
+
+we have this here occupying only our eight columns
+
+in the middle.
+
+But if you then move down here,
+
+you see that this full-bleed section actually goes
+
+all the way from this side, here to the right side
+
+of the viewport.
+
+And the same thing you can see here in the gallery,
+
+and actually even in the footer.
+
+And also the header and top here.
+
+And so these are the full-bleed sections,
+
+and we then need these columns here on the left side
+
+and on the right side to basically
+
+break out of our predefined eight column grid
+
+that we have in the middle of the page.
+
+And so that's another thing that this layout here
+
+allows us to do perfectly.
+
+So this is perfect for having full-bleed sections
+
+in the middle of some eight column sections.
+
+And actually this is a trend that we've been seeing
+
+more and more in web design,
+
+which is having exactly that, what I just said.
+
+So having a couple of design elements
+
+which are centered in the viewport like we have here
+
+with this eight columns,
+
+but then sometimes we have some full-bleed sections
+
+in the middle of that.
+
+And so grid layout is perfect for doing exactly that
+
+in a simple way.
+
+So the first time that we actually set this up,
+
+it's maybe not so simple,
+
+but I hope that you understood the logic behind of this.
+
+So again, we started with an eight column layout
+
+that are these eight columns here,
+
+then on the left side we added this sidebar,
+
+and then we added this column here on the left side
+
+and on the right side, which both occupy the remaining,
+
+so the fractional space,
+
+in order to center these eight columns
+
+in the middle of the page.
+
+And if you then want a full-bleed section,
+
+we can occupy these contents here
+
+and have a section that goes all the way from the left side
+
+to the right side, for example.
+
+And with that, we can kind of break
+
+the inner eight column layout.
+
+So I hope that does a lot of sense to you.
+
+Now in order to make our life a bit easier
+
+when we start placing the items,
+
+let's actually name these column tracks here.
+*/
+  grid-template-columns:
+    [sidebar-start] 8rem [sidebar-end full-start] minmax(6rem, 1fr)
+    [center-start] repeat(8, [col-start] minmax(min-content, 14rem) [col-end])
+    [center-end] minmax(6rem, 1fr) [full-end];
+}

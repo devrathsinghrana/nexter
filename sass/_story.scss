@@ -1,0 +1,54 @@
+.story {
+  &__pictures {
+    background-color: $color-primary;
+    grid-column: full-start / col-end 4;
+    background-image: linear-gradient(
+        rgba($color-primary, 0.5),
+        rgba($color-primary, 0.5)
+      ),
+      url(../img/back.jpg); //as we couldn't use background color directly with url so used linear gradient with same color throughout from left to right which is default direction
+
+    display: grid;
+    grid-template-rows: repeat(6, 1fr);
+    grid-template-columns: repeat(6, 1fr);
+    align-items: center; //this will align img--1 in center
+  }
+
+  &__img--1 {
+    width: 100%;
+    grid-row: 2/6;
+    grid-column: 2/6;
+    box-shadow: 0 2rem 5rem rgba(#000, 0.1);
+  }
+
+  &__img--2 {
+    width: 115%; //we can use transform scale but that will break the center alignment. Increase width and z index to make it overflow a little
+    grid-row: 4/6;
+    grid-column: 4/7;
+    z-index: 20;
+    box-shadow: 0 2rem 5rem rgba(#000, 0.2);
+  }
+
+  &__content {
+    background-color: $color-grey-light-1;
+    grid-column: col-start 5 / full-end;
+    padding: 6rem 8vw;
+
+    // Using flex
+    // display: flex;
+    // flex-direction: column;
+    // justify-content: center;
+    // align-items: flex-start;
+
+    // Using grid
+    display: grid;
+    align-items: center;
+    justify-items: start;
+  }
+
+  &__text {
+    font-size: 1.5rem;
+    font-style: italic;
+    margin-bottom: 4rem; //here we are not using helper class for this element as we are not reusing this element for some other section or page
+  }
+}
