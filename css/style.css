@@ -389,16 +389,51 @@ body {
 
   For now we will do it manually here without using sub grid.
     */
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
-  grid-gap: 6rem;
+}
+@supports (display: grid) {
+  .features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+    grid-gap: 6rem;
+    align-items: start;
+  }
 }
 
 .feature {
+  float: left;
+  width: 33.333%;
+  margin-bottom: 6rem;
+  /*
+    Now we don't have to do it for all of them
+
+  because certain things are actually ignored
+
+  by grid containers and grid items.
+
+  And the same applies to flex containers and flex items.
+
+  So what gets ignored by CSS Grid and Flexbox,
+
+  are floats, display, inline-block, display:table-cell,
+
+  and vertical-align altogether, okay?
+
+  So this float here, we don't have to reset it
+
+  because it's actually ignored
+
+  now that this feature here is a grid item.
+    */
   display: grid;
   grid-template-columns: min-content 1fr;
   grid-gap: 1.5rem 2.5rem;
   align-items: start;
+}
+@supports (display: grid) {
+  .feature {
+    width: auto;
+    margin-bottom: 0;
+  }
 }
 .feature__icon {
   fill: #c69963;
@@ -543,6 +578,7 @@ body {
   display: grid;
   grid-template-columns: repeat(8, 1fr);
   grid-template-rows: repeat(7, 5vw);
+  grid-template: repeat(7, 5vw)/repeat(8, 1fr);
   grid-gap: 1.5rem;
   padding: 1.5rem;
 }

@@ -8,6 +8,10 @@
     7,
     5vw
   ); //we have set height of row relative to make it more responsive
+  // grid-template is shorthand of above 2 properties
+  grid-template:
+    repeat(7, 5vw)
+    / repeat(8, 1fr);
   //images have their intrinsic aspect ratio so they may overflow grid cell to achieve that. not good for gallery as we have images with varied aspect ratios so will make it messy. we use object-fit to handle that
   grid-gap: 1.5rem;
   padding: 1.5rem;
